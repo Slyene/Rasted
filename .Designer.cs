@@ -30,6 +30,7 @@ namespace Rasted
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRasted));
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemOpenFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +41,7 @@ namespace Rasted
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelMode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLocation = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBoxDraw = new System.Windows.Forms.PictureBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonClear = new System.Windows.Forms.ToolStripButton();
@@ -48,6 +50,7 @@ namespace Rasted
             this.toolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).BeginInit();
@@ -109,7 +112,8 @@ namespace Rasted
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelMode,
-            this.toolStripStatusLabelLocation});
+            this.toolStripStatusLabelLocation,
+            this.toolStripStatusLabelDateTime});
             this.statusStrip.Location = new System.Drawing.Point(0, 499);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(886, 22);
@@ -128,6 +132,12 @@ namespace Rasted
             this.toolStripStatusLabelLocation.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabelLocation.Text = "toolStripStatusLabel1";
             // 
+            // toolStripStatusLabelDateTime
+            // 
+            this.toolStripStatusLabelDateTime.Name = "toolStripStatusLabelDateTime";
+            this.toolStripStatusLabelDateTime.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabelDateTime.Text = "toolStripStatusLabel1";
+            // 
             // pictureBoxDraw
             // 
             this.pictureBoxDraw.BackColor = System.Drawing.Color.White;
@@ -140,7 +150,6 @@ namespace Rasted
             this.pictureBoxDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBoxDraw_MouseDown);
             this.pictureBoxDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxDraw_MouseMove);
             this.pictureBoxDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBoxDraw_MouseUp);
-            pictureBoxDraw.Paint += this.PictureBoxDraw_Paint;
             // 
             // toolStrip
             // 
@@ -180,6 +189,7 @@ namespace Rasted
             // toolStripTextBoxText
             // 
             this.toolStripTextBoxText.AccessibleDescription = "";
+            this.toolStripTextBoxText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxText.Name = "toolStripTextBoxText";
             this.toolStripTextBoxText.Size = new System.Drawing.Size(100, 25);
             this.toolStripTextBoxText.Tag = "";
@@ -194,6 +204,11 @@ namespace Rasted
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // FormRasted
             // 
@@ -242,6 +257,8 @@ namespace Rasted
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelLocation;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDateTime;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

@@ -75,6 +75,8 @@ namespace Rasted
             //grPbDraw = pictureBoxDraw.CreateGraphics();
             pictureBoxDraw.Invalidate();
             pen = new Pen(Color.Black, tbPenWidth.Value);
+            toolStripStatusLabelDateTime.Text = DateTime.Now.ToString();
+            timer.Enabled = true;
         }
         private void RadioButton_Click(object sender, EventArgs e)
         {
@@ -126,6 +128,11 @@ namespace Rasted
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 bitBase.Save(saveFileDialog.FileName);
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabelDateTime.Text = DateTime.Now.ToString();
         }
 
         private void ToolStripMenuItemClear_Click(object sender, EventArgs e)
@@ -199,5 +206,7 @@ namespace Rasted
                 e.Graphics.DrawImage(bitBuffer, 0, 0);
             }
         }
+
+
     }
 }
