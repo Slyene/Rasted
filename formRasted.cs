@@ -25,7 +25,7 @@ namespace Rasted
         int x0, y0, x, y;
         PictureBox picObject;
         Bitmap bitObject, bitBase, bitBuffer;
-        Graphics grBitBase, grBitBuffer;
+        Graphics grBitBase, grBitBuffer, grPbDraw;
         RadioButton[] rbArr;  
         Pen pen;
         TrackBar tbPenWidth;
@@ -71,7 +71,9 @@ namespace Rasted
             bitBase = new Bitmap(pictureBoxDraw.Width, pictureBoxDraw.Height);
             grBitBase = Graphics.FromImage(bitBase);
             bitBuffer = new Bitmap(pictureBoxDraw.Width, pictureBoxDraw.Height);
-            grBitBuffer = Graphics.FromImage(bitBase);
+            grBitBuffer = Graphics.FromImage(bitBuffer);
+            //grPbDraw = pictureBoxDraw.CreateGraphics();
+            pictureBoxDraw.Invalidate();
             pen = new Pen(Color.Black, tbPenWidth.Value);
         }
         private void RadioButton_Click(object sender, EventArgs e)
@@ -110,10 +112,13 @@ namespace Rasted
 
         private void ToolStripMenuItemOpenFile_Click(object sender, EventArgs e)
         {
+            Bitmap bit;
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bitBase = new Bitmap(openFileDialog.FileName);
-                this.pictureBoxDraw.Image = bitBase;
+                bit = new Bitmap(openFileDialog.FileName);
+                grBitBase.DrawImage(bit, 0, 0);
+                pictureBoxDraw.Invalidate();
             }
         }
 
@@ -122,7 +127,6 @@ namespace Rasted
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 bitBase.Save(saveFileDialog.FileName);
         }
-
 
         private void ToolStripMenuItemClear_Click(object sender, EventArgs e)
         {
@@ -153,15 +157,16 @@ namespace Rasted
             y = e.Y;
             
             toolStripStatusLabelLocation.Text = $"X: {x}; Y: {y}";
+
             if (drag)
             {
-                grBitBuffer.Clear(Color.White);
+                grBitBuffer.Clear(Color.FromArgb(0, 0, 0, 0));
                 switch (mode)
                 {
                     case "Карандаш":
                         pen.StartCap = LineCap.Round;
                         pen.EndCap = LineCap.Round;
-                        grBitBase.DrawLine(pen, x0, x0, x, y);
+                        grBitBase.DrawLine(pen, x, y, x + 1, y + 1);
                         break;
                     case "Линия":
                         grBitBuffer.DrawLine(pen, x0, y0, x, y);
@@ -169,8 +174,8 @@ namespace Rasted
                     default:
                         break;
                 }
-            }
-            pictureBoxDraw.Invalidate();
+                pictureBoxDraw.Invalidate();
+            }            
         }
 
         private void PictureBoxDraw_MouseDown(object sender, MouseEventArgs e)

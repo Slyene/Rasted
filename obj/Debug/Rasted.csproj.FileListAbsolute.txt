@@ -2,7 +2,7 @@ E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графи�
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\bin\Debug\Rasted.exe
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\bin\Debug\Rasted.pdb
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.csprojAssemblyReference.cache
-E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.formRasted.resources
+E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.FormRasted.resources
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.Properties.Resources.resources
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.csproj.GenerateResource.cache
 E:\Users\Administrator\Documents\Visual Studio 2019\Repos\3 курс графика\Rasted\obj\Debug\Rasted.csproj.CoreCompileInputs.cache
